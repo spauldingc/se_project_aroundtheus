@@ -20,7 +20,8 @@ This project displays several sites around the U.S. that may be of interest to t
 * [Link to the project on Figma](https://www.figma.com/file/ii4xxsJ0ghevUOcssTlHZv/Sprint-3%3A-Around-the-US?node-id=0%3A1)  
   
 **Images**  
-*[Link to main page image](https://github.com/spauldingc/se_project_aroundtheus/blob/3a591db6c5d6a620f77d8a68edf9826497177818/images/MAIN%20PAGE.png)
-*[Link to mobile page image](https://github.com/spauldingc/se_project_aroundtheus/blob/3a591db6c5d6a620f77d8a68edf9826497177818/images/MOBILE.png)
+* [Link to main page image](https://github.com/spauldingc/se_project_aroundtheus/blob/3a591db6c5d6a620f77d8a68edf9826497177818/images/MAIN%20PAGE.png)
+* [Link to mobile page image](https://github.com/spauldingc/se_project_aroundtheus/blob/3a591db6c5d6a620f77d8a68edf9826497177818/images/MOBILE.png)
 
 **Github**  
+* [Link to github project](https://github.com/spauldingc/se_project_aroundtheus)
