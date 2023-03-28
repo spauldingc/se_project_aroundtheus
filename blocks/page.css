@@ -17,15 +17,10 @@
 }
 
 @media screen and (min-width: 320px) and (max-width: 900px) {
-  .page {
-    display: flex;
-    margin-right: 19px;
-    margin-left: 19px;
-  }
-
   .page__section {
     display: flex;
-
+    margin-right: 0px;
+    margin-left: 19px;
     justify-content: center;
     width: 100%;
   }
