@@ -24,4 +24,4 @@ This project displays several sites around the U.S. that may be of interest to t
 * [Link to mobile page image](https://github.com/spauldingc/se_project_aroundtheus/blob/3a591db6c5d6a620f77d8a68edf9826497177818/images/MOBILE.png)
 
 **Github**  
-* [Link to github project](https://github.com/spauldingc/se_project_aroundtheus)
+* [Link to github project on github pages](https://spauldingc.github.io/se_project_aroundtheus/)
