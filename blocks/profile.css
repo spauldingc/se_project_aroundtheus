@@ -103,6 +103,7 @@
     text-align: right;
     padding-top: 26px;
     max-width: 282px;
+    place-items: center;
   }
 
   .profile__title {
@@ -110,6 +111,7 @@
     max-width: 196px;
     text-align: center;
     line-height: 1.2;
+    justify-self: end;
   }
 
   .profile__description {
@@ -126,6 +128,7 @@
     position: relative;
     height: 18px;
     width: 18px;
+    justify-self: start;
   }
 
   .profile__add-button {
