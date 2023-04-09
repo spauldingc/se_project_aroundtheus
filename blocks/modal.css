@@ -37,6 +37,10 @@
   background-size: contain;
 }
 
+.modal__close:hover {
+  opacity: 60%;
+}
+
 .modal__heading {
   color: black;
   font-family: "Inter", Arial, sans-serif;
@@ -88,6 +92,7 @@
   height: 50px;
   width: 100%;
   border: none;
+  cursor: pointer;
 }
 
 .modal__button:hover {
