@@ -97,7 +97,7 @@ function getCardElement(cardData) {
 
 
   likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle(".card__like-button_active");});
+    likeButton.classList.toggle("card__like-button_active");});
 
     cardDeleteBtn.addEventListener("click", () => {
       cardElement.remove();
@@ -113,7 +113,7 @@ function getCardElement(cardData) {
       
       cardImageModalPreview.src = cardImageEl.src;
       cardImageModalPreview.alt = cardImageEl.alt;
-      cardImageModalTitle.textcontent = cardTitleEl.textcontent;
+      cardImageModalTitle.textContent = cardTitleEl.textContent;
            openModal(cardImageModal);
           
         });
