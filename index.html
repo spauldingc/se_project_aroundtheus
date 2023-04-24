@@ -37,6 +37,7 @@
           </div>
           <button
             class="profile__add-button"
+            id="profile-add-button"
             aria-label="add button"
             type="button"
           ></button>
@@ -49,6 +50,7 @@
         <p class="footer__copyright">&copy; 2023 Around The U.S.</p>
       </footer>
     </div>
+<!-- Edit Modal -->
     <div class="modal" id="profile-edit-modal">
       <div class="modal__container">
         <button
@@ -76,9 +78,55 @@
         </form>
       </div>
     </div>
+    <!-- Add Card Modal -->
+    <div class="modal" id="card-add-modal">
+      <div class="modal__container">
+        <button
+          class="modal__close"
+          id="card-add-close-button"
+          type="button"
+        ></button>
+        <h2 class="modal__heading">New Place</h2>
+        <form class="modal__form" name="add-card-form">
+          <input
+            class="modal__input modal__input_type_title"
+            type="text"
+            name="title"
+            placeholder="Title"
+            id="card-form-title"
+          />
+          <input
+            class="modal__input modal__input_type_url"
+            type="text"
+            name="url"
+            placeholder="Image URL"
+            id="card-form-link"
+          />
+          <button type="submit" class="modal__button">Create</button>
+        </form>
+      </div>
+    </div>
+    <!-- Image Modal -->
+    <div class="modal" id="card-image-modal">
+      <div class="modal__image-container">
+        <button
+          class="modal__close"
+          id="card-image-modal-close-button"
+          type="button"
+        ></button>
+        <img
+          src="#"
+          alt="Image"
+          class="modal__image-preview"
+          id="card-image-modal-preview"
+        />
+        <p class="modal__image-title" id="card-image-modal-title"></p>
+      </div>
+    </div>
     <template id="card-template">
       <li class="card">
         <img src="" alt="" class="card__image" />
+        <button class="card__trash-button" type="button"></button>
         <div class="card__description">
           <h2 class="card__title"></h2>
           <button class="card__like-button" type="button"></button>
