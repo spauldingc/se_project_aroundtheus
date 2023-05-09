@@ -113,9 +113,6 @@
   margin-bottom: 0px;
 }
 
-.modal__input_type_error:last-of-type {
-  margin-bottom: 0px;
-}
 
 .modal__error_visible {
   position: relative;
