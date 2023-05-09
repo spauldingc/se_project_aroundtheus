@@ -98,6 +98,7 @@ function handleCardAddSubmit(e) {
   renderCard({ name, link }, cardListEl);
 
   closeModal(cardAddModal);
+ 
   e.target.reset();
   toggleBtnState(inputEls, submitBtn, config);
 }
