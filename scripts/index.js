@@ -63,16 +63,15 @@ const modals = [...document.querySelectorAll(".modal")];
 /*Functions*/
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
-  document.removeEventListener("keydown", escCloseModal);
+  document.removeEventListener("keydown", closeModalWithEsc);
 }
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
-  document.addEventListener("keydown", escCloseModal);
-
+  document.addEventListener("keydown", closeModalWithEsc);
 }
 
-const escCloseModal = (e) => {
+const closeModalWithEsc = (e) => {
   if (e.key === "Escape") {
     const currentModal = document.querySelector(".modal_opened");
     closeModal(currentModal);
@@ -99,6 +98,7 @@ function handleCardAddSubmit(e) {
   renderCard({ name, link }, cardListEl);
   closeModal(cardAddModal);
   e.target.reset();
+  toggleBtnState(inputEls, subutBtn, { inactiveButtonClass });
 }
 
 function getCardElement(cardData) {
@@ -129,13 +129,13 @@ function getCardElement(cardData) {
   return cardElement;
 }
 
-function clickCloseModal(modal) {
+function addCloseModalWithClick(modal) {
   modal.addEventListener("click", (event) => {
     if (
       event.target.classList.contains("modal") ||
       event.target.classList.contains("modal__close")
     ) {
-      modal.classList.remove("modal_opened");
+      closeModal(modal);
     }
   });
 }
@@ -152,7 +152,6 @@ profileAddBtn.addEventListener("click", () => openModal(cardAddModal));
 profileCloseBtn.addEventListener("click", () => closeModal(profileEditModal));
 cardAddCloseBtn.addEventListener("click", () => closeModal(cardAddModal));
 cardImageCloseBtn.addEventListener("click", () => closeModal(cardImageModal));
-cardImageCloseBtn.addEventListener("click", () => closeModal(cardImageModal));
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 cardAddForm.addEventListener("submit", handleCardAddSubmit);
@@ -160,5 +159,5 @@ cardAddForm.addEventListener("submit", handleCardAddSubmit);
 initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
 
 modals.forEach((modal) => {
-  clickCloseModal(modal);
+  addCloseModalWithClick(modal);
 });
