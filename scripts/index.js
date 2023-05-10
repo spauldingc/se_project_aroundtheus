@@ -132,7 +132,7 @@ function getCardElement(cardData) {
   return cardElement;
 }
 
-function addCloseModalWithClick(modal) {
+function addCloseModalWithClickListener(modal) {
   modal.addEventListener("click", (event) => {
     if (
       event.target.classList.contains("modal") ||
@@ -162,5 +162,5 @@ cardAddForm.addEventListener("submit", handleCardAddSubmit);
 initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
 
 modals.forEach((modal) => {
-  addCloseModalWithClick(modal);
+  addCloseModalWithClickListener(modal);
 });
