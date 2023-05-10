@@ -18,9 +18,10 @@ function checkInputValidity(formEl, inputEl, options) {
   }
   hideInputError(formEl, inputEl, options);
 }
-
-function hasInvalidInput(inputEls) {
-  return !inputEls.every((inputEl) => inputEl.validity.valid);
+function hasInvalidInput(inputList) {
+  return !inputList.every((inputEl) => {
+    return inputEl.validity.valid
+  });
 }
 
 function disableBtn(submitBtn, { inactiveButtonClass }) {

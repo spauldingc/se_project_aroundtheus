@@ -98,9 +98,10 @@ function handleCardAddSubmit(e) {
   renderCard({ name, link }, cardListEl);
 
   closeModal(cardAddModal);
- 
-  e.target.reset();
+
+  e.target.reset();  
   toggleBtnState(inputEls, submitBtn, config);
+
 }
 
 function getCardElement(cardData) {
