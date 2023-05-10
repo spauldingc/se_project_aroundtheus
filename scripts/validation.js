@@ -20,7 +20,7 @@ function checkInputValidity(formEl, inputEl, options) {
 }
 function hasInvalidInput(inputList) {
   return !inputList.every((inputEl) => {
-    return inputEl.validity.valid
+    return inputEl.validity.valid;
   });
 }
 

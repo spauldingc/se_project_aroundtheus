@@ -99,9 +99,10 @@ function handleCardAddSubmit(e) {
 
   closeModal(cardAddModal);
 
-  e.target.reset();  
+  e.target.reset();
+  const inputEls = [...cardAddForm.querySelectorAll(config.inputSelector)];
+  const submitBtn = cardAddForm.querySelector(config.submitBtnSelector);
   toggleBtnState(inputEls, submitBtn, config);
-
 }
 
 function getCardElement(cardData) {
