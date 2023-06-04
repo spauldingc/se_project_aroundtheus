@@ -1,0 +1,74 @@
+export default class FormValidator {
+  constructor(config, formEl) {
+    this._inputEl = config.inputSelector;
+    this._submitBtnSelector = config.submitBtnSelector;
+    this._inactiveButtonClass = config.inactiveButtonClass;
+    this._inputErrorClass = config.inputErrorClass;
+    this._errorClass = config.errorClass;
+    this._formEl = formEl;
+    this._inputEls = [...this._formEl.querySelectorAll(this._inputEl)];
+  }
+
+  _showInputError(inputEl, errorClass) {
+    const errorMessageEl = this._formEl.querySelector(`#${inputEl.id}-error`);
+    inputEl.classList.add(this._inputErrorClass);
+    errorMessageEl.textContent = this._errorClass;
+    errorMessageEl.classList.add(this._errorClass);
+  }
+
+  _hideInputError(inputEl) {
+    const errorMessageEl = this._formEl.querySelector(`#${inputEl.id}-error`);
+    inputEl.classList.remove(this._inputErrorClass);
+    errorMessageEl.textContent = "";
+    errorMessageEl.classList.remove(this._errorClass);
+  }
+
+  _checkInputValidity(inputEl) {
+    if (!inputEl.validity.valid) {
+      this._showInputError(inputEl, inputEl.errorMessageEl);
+    }
+    this._hideInputError(inputEl);
+  }
+
+  _hasInvalidInput() {
+    return !this._inputEls.every((inputEl) => {
+      return inputEl.validity.valid;
+    });
+  }
+
+  _disableBtn() {
+    this._submitBtn = this._formEl.querySelector(this._submitBtnSelector);
+    this._submitBtn.classList.add(this._inactiveButtonClass);
+    this._submitBtn.disabled = true;
+  }
+
+  _enableBtn() {
+    this._submitBtn.classList.remove(this._inactiveButtonClass);
+    this._submitBtn.disabled = false;
+  }
+
+  _toggleBtnState() {
+    if (this._hasInvalidInput()) {
+      this._disableBtn();
+    } else {
+      this._enableBtn();
+    }
+  }
+
+  _setEventListeners() {
+    this._toggleBtnState();
+    this._inputEls.forEach((inputEl) => {
+      inputEl.addEventListener("input", (event) => {
+        this._checkInputValidity(inputEl);
+        this._toggleBtnState();
+      });
+    });
+  }
+
+  enableValidation() {
+    this._formEl.addEventListener("submit", (event) => {
+      event.preventDefault();
+    });
+    this._setEventListeners();
+  }
+}
