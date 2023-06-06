@@ -1,6 +1,6 @@
 import FormValidator from "../components/FormValidator.js";
 import Card from "../components/Card.js";
-import { closeModal, openModal } from "../utils/utils.js";
+import { closeModal, openModal, addCloseModalWithClickListener } from "../utils/utils.js";
 
 const initialCards = [
   {
@@ -97,6 +97,11 @@ profileAddBtn.addEventListener("click", () => openModal(cardAddModal));
 profileCloseBtn.addEventListener("click", () => closeModal(profileEditModal));
 cardAddCloseBtn.addEventListener("click", () => closeModal(cardAddModal));
 cardImageCloseBtn.addEventListener("click", () => closeModal(cardImageModal));
+
+
+modals.forEach((modal) => {
+  addCloseModalWithClickListener(modal);
+});
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 cardAddForm.addEventListener("submit", handleCardAddSubmit);

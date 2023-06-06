@@ -1,7 +1,6 @@
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
   document.removeEventListener("keydown", closeModalWithEsc);
-  modal.removeEventListener("mousedown", addCloseModalWithClickListener);
 }
 
 function openModal(modal) {
@@ -27,4 +26,4 @@ function addCloseModalWithClickListener(modal) {
   });
 }
 
-export { closeModal, openModal };
+export { closeModal, openModal, addCloseModalWithClickListener };
