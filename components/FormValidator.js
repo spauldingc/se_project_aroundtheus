@@ -10,22 +10,22 @@ export default class FormValidator {
   }
 
   _showInputError(inputEl) {
-     this._errorMessageEl = this._formEl.querySelector(`#${inputEl.id}-error`);
-    inputEl.classList.add(this._inputErrorClass);
+    this._errorMessageEl = this._formEl.querySelector(`#${inputEl.id}-error`);
+    this._inputEl.classList.add(this._inputErrorClass);
     this._errorMessageEl.textContent = this._inputEl.validationMessage;
     this._errorMessageEl.classList.add(this._errorClass);
   }
 
   _hideInputError(inputEl) {
     this._errorMessageEl = this._formEl.querySelector(`#${inputEl.id}-error`);
-    inputEl.classList.remove(this._inputErrorClass);
+    this._inputEl.classList.remove(this._inputErrorClass);
     this._errorMessageEl.textContent = "";
     this._errorMessageEl.classList.remove(this._errorClass);
   }
 
   _checkInputValidity(inputEl) {
     if (!inputEl.validity.valid) {
-      this._showInputError(inputEl);
+      return this._showInputError(inputEl);
     }
     this._hideInputError(inputEl);
   }

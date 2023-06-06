@@ -1,6 +1,10 @@
 import FormValidator from "../components/FormValidator.js";
 import Card from "../components/Card.js";
-import { closeModal, openModal, addCloseModalWithClickListener } from "../utils/utils.js";
+import {
+  closeModal,
+  openModal,
+  addCloseModalWithClickListener,
+} from "../utils/utils.js";
 
 const initialCards = [
   {
@@ -98,7 +102,6 @@ profileCloseBtn.addEventListener("click", () => closeModal(profileEditModal));
 cardAddCloseBtn.addEventListener("click", () => closeModal(cardAddModal));
 cardImageCloseBtn.addEventListener("click", () => closeModal(cardImageModal));
 
-
 modals.forEach((modal) => {
   addCloseModalWithClickListener(modal);
 });
@@ -115,7 +118,7 @@ const defaultFormConfig = {
   submitBtnSelector: ".modal__button",
   inactiveButtonClass: "modal__button_disabled",
   inputErrorClass: "modal__input_type_error",
-  errorClass: "modal__error_visible",
+  errorClass: ".modal__error_visible",
 };
 
 const editFormValidator = new FormValidator(
