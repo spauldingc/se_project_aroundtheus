@@ -5,13 +5,11 @@ export default class Card {
     this._name = name;
     this._link = link;
     this._cardSelector = cardSelector;
-    this._cardElement = document
-      .querySelector("#card-template")
-      .content.firstElementChild.cloneNode(true);
+     this._cardElement= this._getTemplate();
     this._cardImageEl = this._cardElement.querySelector(".card__image");
     this._cardLikeBtn = this._cardElement.querySelector(".card__like-button");
     this._cardTrashBtn = this._cardElement.querySelector(".card__trash-button");
-  }
+    }
 
   _setEventListeners() {
     this._cardLikeBtn.addEventListener("click", () => {
@@ -50,17 +48,18 @@ export default class Card {
   }
 
   _getTemplate() {
-    return this._cardElement;
+    return document
+      .querySelector(this._cardSelector)
+      .content.firstElementChild.cloneNode(true);
   }
 
   generateCard() {
-    this._cardTemplate = this._getTemplate();
-    this._cardTitleEl = this._cardTemplate.querySelector(".card__title");
+    this._cardTitleEl = this._cardElement.querySelector(".card__title");
     this._cardImageEl.src = this._link;
     this._cardImageEl.alt = this._name;
     this._cardTitleEl.textContent = this._name;
     this._setEventListeners();
 
-    return this._cardTemplate;
+    return this._cardElement;
   }
 }
