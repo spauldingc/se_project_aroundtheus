@@ -87,7 +87,6 @@ function handleCardAddSubmit(e) {
   const link = cardUrlInput.value;
   renderCard({ name, link }, cardListEl);
   closeModal(cardAddModal);
- 
 }
 
 /* Event Handlers */
@@ -118,21 +117,21 @@ const defaultFormConfig = {
   errorClass: "modal__error_visible",
 };
 
-const formValidators = {}
+const formValidators = {};
 
 // enable validation
 const enableValidation = (config) => {
-  const formList = Array.from(document.querySelectorAll(config.formSelector))
+  const formList = Array.from(document.querySelectorAll(config.formSelector));
   formList.forEach((formElement) => {
-    const validator = new FormValidator(config, formElement)
+    const validator = new FormValidator(config, formElement);
     // here you get the name of the form
-    const formName = formElement.getAttribute('name')
+    const formName = formElement.getAttribute("name");
 
-   // here you store a validator by the `name` of the form
+    // here you store a validator by the `name` of the form
     formValidators[formName] = validator;
-   validator.enableValidation();
+    validator.enableValidation();
   });
 };
 
 enableValidation(defaultFormConfig);
-formValidators['add-card-form'].resetValidation()
+formValidators["add-card-form"].resetValidation();

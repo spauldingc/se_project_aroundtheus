@@ -5,30 +5,28 @@ export default class Card {
     this._name = name;
     this._link = link;
     this._cardSelector = cardSelector;
-    this._cardElement = document.querySelector("#card-template").content.firstElementChild.cloneNode(true);
+    this._cardElement = document
+      .querySelector("#card-template")
+      .content.firstElementChild.cloneNode(true);
     this._cardImageEl = this._cardElement.querySelector(".card__image");
     this._cardLikeBtn = this._cardElement.querySelector(".card__like-button");
     this._cardTrashBtn = this._cardElement.querySelector(".card__trash-button");
   }
 
   _setEventListeners() {
-    this._cardLikeBtn
-      .addEventListener("click", () => {
-        this._handleLikeIcon();
-      });
-      this._cardTrashBtn 
-      .addEventListener("click", () => {
-        this._handleDeleteCard();
-      });
-    this._cardImageEl
-      .addEventListener("click", () => {
-        this._handlePreviewPicture();
-      });
+    this._cardLikeBtn.addEventListener("click", () => {
+      this._handleLikeIcon();
+    });
+    this._cardTrashBtn.addEventListener("click", () => {
+      this._handleDeleteCard();
+    });
+    this._cardImageEl.addEventListener("click", () => {
+      this._handlePreviewPicture();
+    });
   }
 
   _handleLikeIcon() {
-    this._cardLikeBtn
-      .classList.toggle("card__like-button_active");
+    this._cardLikeBtn.classList.toggle("card__like-button_active");
   }
 
   _handleDeleteCard() {

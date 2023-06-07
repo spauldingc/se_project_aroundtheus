@@ -8,7 +8,6 @@ function closeModal(modal) {
 function openModal(modal) {
   modal.classList.add("modal_opened");
   document.addEventListener("keydown", closeModalWithEsc);
-  
 }
 
 const closeModalWithEsc = (event) => {

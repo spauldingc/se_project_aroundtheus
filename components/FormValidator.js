@@ -8,8 +8,6 @@ export default class FormValidator {
     this._formEl = formEl;
     this._inputEls = [...this._formEl.querySelectorAll(this._inputSelector)];
     this._submitBtn = this._formEl.querySelector(this._submitBtnSelector);
-    
-
   }
 
   _showInputError(inputEl) {
@@ -75,12 +73,10 @@ export default class FormValidator {
   }
 
   resetValidation() {
-    this._toggleBtnState(); 
+    this._toggleBtnState();
 
     this._inputEls.forEach((inputEl) => {
-      this._hideInputError(inputEl) 
+      this._hideInputError(inputEl);
     });
-
   }
 }
-
