@@ -87,8 +87,8 @@ function handleCardAddSubmit(e) {
   const link = cardUrlInput.value;
   renderCard({ name, link }, cardListEl);
   closeModal(cardAddModal);
-  e.target.reset();  
-  formValidators["add-card-form"].resetValidation();  
+  e.target.reset();
+  formValidators["add-card-form"].resetValidation();
 }
 
 /* Event Handlers */

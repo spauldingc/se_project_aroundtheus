@@ -5,11 +5,11 @@ export default class Card {
     this._name = name;
     this._link = link;
     this._cardSelector = cardSelector;
-     this._cardElement= this._getTemplate();
+    this._cardElement = this._getTemplate();
     this._cardImageEl = this._cardElement.querySelector(".card__image");
     this._cardLikeBtn = this._cardElement.querySelector(".card__like-button");
     this._cardTrashBtn = this._cardElement.querySelector(".card__trash-button");
-    }
+  }
 
   _setEventListeners() {
     this._cardLikeBtn.addEventListener("click", () => {
