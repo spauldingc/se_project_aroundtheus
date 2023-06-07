@@ -87,7 +87,7 @@ function handleCardAddSubmit(e) {
   const link = cardUrlInput.value;
   renderCard({ name, link }, cardListEl);
   closeModal(cardAddModal);
-  e.target.reset();
+ 
 }
 
 /* Event Handlers */
@@ -98,9 +98,6 @@ profileEditBtn.addEventListener("click", () => {
 });
 
 profileAddBtn.addEventListener("click", () => openModal(cardAddModal));
-profileCloseBtn.addEventListener("click", () => closeModal(profileEditModal));
-cardAddCloseBtn.addEventListener("click", () => closeModal(cardAddModal));
-cardImageCloseBtn.addEventListener("click", () => closeModal(cardImageModal));
 
 modals.forEach((modal) => {
   addCloseModalWithClickListener(modal);
@@ -118,14 +115,24 @@ const defaultFormConfig = {
   submitBtnSelector: ".modal__button",
   inactiveButtonClass: "modal__button_disabled",
   inputErrorClass: "modal__input_type_error",
-  errorClass: ".modal__error_visible",
+  errorClass: "modal__error_visible",
 };
 
-const editFormValidator = new FormValidator(
-  defaultFormConfig,
-  profileEditModal
-);
-const cardFormValidator = new FormValidator(defaultFormConfig, cardAddModal);
+const formValidators = {}
 
-editFormValidator.enableValidation();
-cardFormValidator.enableValidation();
+// enable validation
+const enableValidation = (config) => {
+  const formList = Array.from(document.querySelectorAll(config.formSelector))
+  formList.forEach((formElement) => {
+    const validator = new FormValidator(config, formElement)
+    // here you get the name of the form
+    const formName = formElement.getAttribute('name')
+
+   // here you store a validator by the `name` of the form
+    formValidators[formName] = validator;
+   validator.enableValidation();
+  });
+};
+
+enableValidation(defaultFormConfig);
+formValidators['add-card-form'].resetValidation()

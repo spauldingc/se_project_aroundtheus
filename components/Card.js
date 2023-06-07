@@ -5,29 +5,29 @@ export default class Card {
     this._name = name;
     this._link = link;
     this._cardSelector = cardSelector;
+    this._cardElement = document.querySelector("#card-template").content.firstElementChild.cloneNode(true);
+    this._cardImageEl = this._cardElement.querySelector(".card__image");
+    this._cardLikeBtn = this._cardElement.querySelector(".card__like-button");
+    this._cardTrashBtn = this._cardElement.querySelector(".card__trash-button");
   }
 
   _setEventListeners() {
-    this._cardElement
-      .querySelector(".card__like-button")
+    this._cardLikeBtn
       .addEventListener("click", () => {
         this._handleLikeIcon();
       });
-    this._cardElement
-      .querySelector(".card__trash-button")
+      this._cardTrashBtn 
       .addEventListener("click", () => {
         this._handleDeleteCard();
       });
-    this._cardElement
-      .querySelector(".card__image")
+    this._cardImageEl
       .addEventListener("click", () => {
         this._handlePreviewPicture();
       });
   }
 
   _handleLikeIcon() {
-    this._cardElement
-      .querySelector(".card__like-button")
+    this._cardLikeBtn
       .classList.toggle("card__like-button_active");
   }
 
@@ -52,25 +52,17 @@ export default class Card {
   }
 
   _getTemplate() {
-    this._cardElement = document
-      .querySelector("#card-template")
-      .content.firstElementChild.cloneNode(true);
     return this._cardElement;
   }
 
   generateCard() {
-    this._cardElement = this._getTemplate();
-    this._cardImageEl = this._cardElement.querySelector(".card__image");
-    this._cardTitleEl = this._cardElement.querySelector(".card__title");
+    this._cardTemplate = this._getTemplate();
+    this._cardTitleEl = this._cardTemplate.querySelector(".card__title");
     this._cardImageEl.src = this._link;
     this._cardImageEl.alt = this._name;
     this._cardTitleEl.textContent = this._name;
     this._setEventListeners();
 
-    return this._cardElement;
-  }
-
-  returnCard() {
-    return this._generateCard();
+    return this._cardTemplate;
   }
 }
