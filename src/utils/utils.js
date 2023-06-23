@@ -1,5 +1,5 @@
-import FormValidator from "../components/FormValidator.js";
-
+//import FormValidator from "../components/FormValidator.js";
+/*
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
   document.removeEventListener("keydown", closeModalWithEsc);
@@ -29,3 +29,4 @@ function addCloseModalWithClickListener(modal) {
 }
 
 export { closeModal, openModal, addCloseModalWithClickListener };
+*/

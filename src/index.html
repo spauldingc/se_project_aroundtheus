@@ -7,13 +7,12 @@
     <meta name="author" content="Christine Spaulding" />
     <title>Around the U.S.</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./pages/index.css" />
   </head>
   <body class="page">
     <div class="page__content">
       <header class="header">
         <img
-          src="./images/logo.svg"
+          src="<%=require('./images/logo.svg')%>"
           alt="Around the U.S. Logo"
           class="header__logo"
         />
@@ -21,7 +20,7 @@
       <main class="content">
         <section class="profile page__section">
           <img
-            src="./images/jacques-cousteau.jpg"
+            src="<%=require('./images/jacques-cousteau.jpg')%>"
             alt="Jacques Cousteau Avatar"
             class="profile__image"
           />
@@ -153,6 +152,5 @@
         </div>
       </li>
     </template>
-    <script type="module" src="../pages/index.js" ></script>
   </body>
 </html>
