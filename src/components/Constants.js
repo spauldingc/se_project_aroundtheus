@@ -27,15 +27,16 @@ export const initialCards = [
     },
   ];
   
+  
+  /*Elements*/
+
   export const cardData = {
     name: "Vanoise National Park",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
   };
-  
-  /*Elements*/
 
   export const selectors = {
-    cardSection: "cards__list",
+    cardList: "cards__list",
     cardTemplate: "#card-template",
     cardImageModal: "#card-image-modal"
 

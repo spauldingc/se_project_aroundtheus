@@ -19,22 +19,31 @@ import {
 
 
 /* Remaining Functions */
-const CardPreviewPopup = new PopupWithImage(selectors.cardImageModal);
-const CardSection = new Section({
-  renderer: (item)=>{
+
+
+
+//const addCardPopup = new PopupWithForm(selectors);
+
+
+const cardPreviewPopup = new PopupWithImage(selectors.cardImageModal);
+const cardSection = new Section(
+  {
+  items: initialCards,
+  renderer: (item) => {
     const card = new Card(item, selectors.cardTemplate);
-      cardSection.addItem(card.generateCard());
-  }, items: initialCards}, selectors.cardSection
+    cardSection.addItem(card.generateCard());
+}}
+, selectors.cardList
 );
 
-CardSection.renderItems(initialCards);
-CardPreviewPopup.setEventListeners();
 
-/*
-function renderCard(cardData, wrapper) {
-  const card = new Card(cardData, "#card-template");
-  wrapper.prepend(card.generateCard());
-}*/
+
+
+
+cardSection.renderItems();
+cardPreviewPopup.setEventListeners();
+
+
 
 function handleProfileEditSubmit(e) {
   e.preventDefault();
