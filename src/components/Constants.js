@@ -40,6 +40,8 @@ export const initialCards = [
     cardImageModal: "#card-image-modal"
 
   }
+
+
   /*
   export const profileTitle = document.querySelector(".profile__title");
   export  const profileDescription = document.querySelector(".profile__description");

@@ -1,5 +1,6 @@
 
 import PopupWithImage from "./PopupWithImage.js"
+import PopupWithForm from "./PopupWithForm.js"
 
 export default class Card {
   constructor({ name, link }, cardSelector, handleCardClick) {
