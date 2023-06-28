@@ -1,50 +1,85 @@
 // index.js
+//import constants
+import {
+  initialCards,
+  selectors,
+  cardAddModal,
+  cardTitleInput,
+  cardUrlInput,
+  cardAddForm,
+  profileTitle,
+  profileTitleInput,
+  profileDescriptionInput,
+  profileDescription,
+  profileEditModal,
+  profileEditForm,
+  profileEditBtn,
+  profileAddBtn,
+  modals,
+} from "../components/Constants.js";
 
-import {initialCards, selectors} from "../components/Constants.js";
+//import component classes
 import FormValidator from "../components/FormValidator.js";
 import Card from "../components/Card.js";
 import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
+import UserInfo from "../components/UserInfo.js";
 
+//import styles
+import "./index.css";
 
-import  "./index.css";
-/*
-import {
-  closeModal,
-  openModal,
-  addCloseModalWithClickListener,
-} from "../utils/utils.js";
-*/
+//Profile Class
+const userInfo = new UserInfo(profileTitle, profileDescription);
 
+const editProfileModal = new PopupWithForm(profileEditModal, (inputsObject) => {
+  userInfo.setUserInfo(inputsObject.name, inputsObject.description);
+  editProfileModal.close();
+});
 
-/* Remaining Functions */
+//Section Class
+const cardSection = new Section(
+  {
+    items: initialCards,
+    renderer: ({ name, link }) => {
+      const card = addCard({ name, link });
+      cardSection.addItem(card);
+    },
+  },
+  selectors.cardList
+);
 
+cardSection.renderItems();
 
+//Create Cards or Add Cards through Submit
+function addCard({ name, link }) {
+  const newCard = new Card(
+    { name, link },
+    selectors.cardTemplate,
+    ({ name, link }) => {
+      cardPreviewPopup.open({ name, link });
+    }
+  );
+  return newCard.generateCard();
+}
 
-//const addCardPopup = new PopupWithForm(selectors);
+function handleCardAddSubmit({ title, url }, e) {
+  e.preventDefault();
+  const addCardData = { name: title, link: url };
+  cardSection.prependItem(addCard(addCardData));
+  e.target.reset();
+  formValidators["add-card-form"].resetValidation();
+  addCardPopup.close();
+}
 
 
 const cardPreviewPopup = new PopupWithImage(selectors.cardImageModal);
-const cardSection = new Section(
-  {
-  items: initialCards,
-  renderer: (item) => {
-    const card = new Card(item, selectors.cardTemplate);
-    cardSection.addItem(card.generateCard());
-}}
-, selectors.cardList
+const addCardPopup = new PopupWithForm(
+  selectors.cardAddModal,
+  handleCardAddSubmit
 );
 
-
-
-
-
-cardSection.renderItems();
-cardPreviewPopup.setEventListeners();
-
-
-
+/*
 function handleProfileEditSubmit(e) {
   e.preventDefault();
   profileTitle.textContent = profileTitleInput.value;
@@ -52,35 +87,12 @@ function handleProfileEditSubmit(e) {
   closeModal(profileEditModal);
 }
 
-function handleCardAddSubmit(e) {
-  e.preventDefault();
-  const name = cardTitleInput.value;
-  const link = cardUrlInput.value;
-  renderCard({ name, link }, cardListEl);
-  closeModal(cardAddModal);
-  e.target.reset();
-  formValidators["add-card-form"].resetValidation();
 }
 
-/* Event Handlers */
-profileEditBtn.addEventListener("click", () => {
-  profileTitleInput.value = profileTitle.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
-  openModal(profileEditModal);
-});
 
-profileAddBtn.addEventListener("click", () => openModal(cardAddModal));
+*/
 
-modals.forEach((modal) => {
-  addCloseModalWithClickListener(modal);
-});
-
-profileEditForm.addEventListener("submit", handleProfileEditSubmit);
-cardAddForm.addEventListener("submit", handleCardAddSubmit);
-
-initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
-
-/* Validation */
+/* Form Validation */
 const defaultFormConfig = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
@@ -107,3 +119,19 @@ const enableValidation = (config) => {
 };
 
 enableValidation(defaultFormConfig);
+
+/* Event Handlers */
+
+
+profileEditBtn.addEventListener("click", () => {
+  profileTitleInput.value = profileTitle.textContent;
+  profileDescriptionInput.value = profileDescription.textContent;
+  editProfileModal.open();
+});
+
+profileAddBtn.addEventListener("click", () => {
+  addCardPopup.open(); 
+});
+
+profileEditForm.addEventListener("submit", handleProfileEditSubmit);
+cardAddForm.addEventListener("submit", handleCardAddSubmit);
