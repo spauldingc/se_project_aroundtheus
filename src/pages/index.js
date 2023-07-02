@@ -61,15 +61,17 @@ function handleCardEditSubmit(inputValues) {
   // e.preventDefault();
   userInfo.setUserInfo(inputValues.title, inputValues.description);
   editProfileModal.close();
+  editProfileModal.reset();
 }
 
 function handleCardAddSubmit({ title, url }) {
   //e.preventDefault();
   const addCardData = { name: title, link: url };
   cardSection.addItem(addCard(addCardData));
-  // e.target.reset();
+    // e.target.reset();
   // formValidators["add-card-form"].resetValidation();
   addCardPopup.close();
+  addCardPopup.reset();
 }
 
 const cardPreviewPopup = new PopupWithImage(selectors.cardImageModal);

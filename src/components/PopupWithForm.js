@@ -9,12 +9,14 @@ export default class PopupWithImage extends Popup {
   close() {
     super.close();
     this._popupForm.reset();
+    this._popupForm.removeEventListener("submit", this._handleFormSubmit);
   }
 
   _getInputValues() {
     const inputValues = {};
     this._inputEls.forEach((inputEl) => {
-      inputValues[inputEl.name] = inputEl.value;
+      if(inputEl!==""){
+      inputValues[inputEl.name] = inputEl.value;}
     });
     return inputValues;
   }
