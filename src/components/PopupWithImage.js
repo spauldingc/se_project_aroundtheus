@@ -5,15 +5,14 @@ constructor(popupSelector){
     this._cardImageModalPreview = document.querySelector(
       "#card-image-modal-preview");
       this._cardImageModalTitle = document.querySelector(
-        "#card-image-modal-title").textContent;
+        "#card-image-modal-title");
 }
-open({link, name}){
-    super.open();
+open({name, link}){
     
+    this._cardImageModalPreview.src =  link;
+    this._cardImageModalPreview.alt =  name;
     this._cardImageModalTitle.textContent = name;
-  this._cardImageModalTitle.alt = name;
-   this._cardImageModalPreview.src = link;
-    
-
+super.open();
+  
 }
 }

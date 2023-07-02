@@ -1,7 +1,7 @@
 import FormValidator from "./FormValidator.js";
 export default class Popup {
   constructor({ popupSelector }) {
-    this._popupElement = document.querySelector(".modal");
+    this._popupElement = document.querySelector(popupSelector);
   }
   open() {
     this._popupElement.classList.add("modal_opened");

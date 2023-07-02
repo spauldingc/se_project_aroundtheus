@@ -6,16 +6,15 @@ this._userJob = userJob;
 }
 
 getUserInfo(){
-const userObject = {};
-userObject["profileName"] =this._userName.textContent;
-userObject["profileDescription"]= this._userJob.textContent;
-return userObject;
+return {
+profileName: this._userName.textContent,
+profileDescription: this._userJob.textContent};
 }
 
 
-setUserInfo(nameInfo, jobInfo){
-    this._userName.textContent= nameInfo;
-    this._userJob.textContent= jobInfo;
+setUserInfo(name, job){
+    this._userName.textContent= name;
+    this._userJob.textContent= job;
 }
 
 }
