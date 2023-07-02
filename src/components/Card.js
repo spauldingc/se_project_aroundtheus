@@ -1,6 +1,5 @@
-
-import PopupWithImage from "./PopupWithImage.js"
-import PopupWithForm from "./PopupWithForm.js"
+import PopupWithImage from "./PopupWithImage.js";
+import PopupWithForm from "./PopupWithForm.js";
 
 export default class Card {
   constructor({ name, link }, cardSelector, handleCardClick) {
@@ -14,7 +13,6 @@ export default class Card {
     this._handleCardClick = handleCardClick;
   }
 
-  
   _handleLikeIcon() {
     this._cardLikeBtn.classList.toggle("card__like-button_active");
   }
@@ -32,10 +30,10 @@ export default class Card {
       this._handleDeleteCard();
     });
     this._cardImageEl.addEventListener("click", () => {
-      this._handleCardClick({name: this._name,  link: this._link});
+      this._handleCardClick({ name: this._name, link: this._link });
     });
-};
-  
+  }
+
   _getTemplate() {
     return document
       .querySelector(this._cardSelector)
