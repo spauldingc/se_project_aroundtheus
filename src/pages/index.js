@@ -61,7 +61,6 @@ function handleCardEditSubmit(inputValues) {
   // e.preventDefault();
   userInfo.setUserInfo(inputValues.title, inputValues.description);
   editProfileModal.close();
-  editProfileModal.reset();
 }
 
 function handleCardAddSubmit({ title, url }) {
@@ -71,7 +70,6 @@ function handleCardAddSubmit({ title, url }) {
     // e.target.reset();
   // formValidators["add-card-form"].resetValidation();
   addCardPopup.close();
-  addCardPopup.reset();
 }
 
 const cardPreviewPopup = new PopupWithImage(selectors.cardImageModal);
