@@ -80,6 +80,7 @@ const addCardPopup = new PopupWithForm(
 
 addCardPopup.setEventListeners();
 editProfileModal.setEventListeners();
+cardPreviewPopup.setEventListeners();
 
 /* Form Validation */
 
