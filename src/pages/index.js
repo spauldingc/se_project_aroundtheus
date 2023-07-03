@@ -10,6 +10,7 @@ import {
   profileEditModal,
   profileEditBtn,
   profileAddBtn,
+  defaultFormConfig,
 } from "../utils/Constants.js";
 
 //import component classes
@@ -67,7 +68,7 @@ function handleCardAddSubmit({ title, url }) {
   //e.preventDefault();
   const addCardData = { name: title, link: url };
   cardSection.addItem(addCard(addCardData));
-    // e.target.reset();
+  // e.target.reset();
   // formValidators["add-card-form"].resetValidation();
   addCardPopup.close();
 }
@@ -84,25 +85,16 @@ cardPreviewPopup.setEventListeners();
 
 /* Form Validation */
 
-export const defaultFormConfig = {
-  formSelector: ".modal__form",
-  inputSelector: ".modal__input",
-  submitBtnSelector: ".modal__button",
-  inactiveButtonClass: "modal__button_disabled",
-  inputErrorClass: "modal__input_type_error",
-  errorClass: "modal__error_visible",
-};
-
-const AddCardValidator = new FormValidator(
+const addCardValidator = new FormValidator(
   defaultFormConfig,
   selectors.cardAddModal
 );
-const EditCardValidator = new FormValidator(
+const editCardValidator = new FormValidator(
   defaultFormConfig,
   profileEditModal
 );
-AddCardValidator.enableValidation();
-EditCardValidator.enableValidation();
+addCardValidator.enableValidation();
+editCardValidator.enableValidation();
 
 /* Event Handlers */
 
@@ -110,11 +102,12 @@ profileEditBtn.addEventListener("click", () => {
   const { profileName, profileDescription } = userInfo.getUserInfo();
   profileTitleInput.value = profileName;
   profileDescriptionInput.value = profileDescription;
-  EditCardValidator._toggleBtnState();
+  editCardValidator.resetValidation();
   editProfileModal.open();
 });
 
 profileAddBtn.addEventListener("click", () => {
-  AddCardValidator._toggleBtnState();
+  addCardValidator.resetValidation();
+
   addCardPopup.open();
 });
