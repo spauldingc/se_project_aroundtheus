@@ -80,6 +80,9 @@ const addCardPopup = new PopupWithForm(
   handleCardAddSubmit
 );
 
+addCardPopup.setEventListeners();
+editProfileModal.setEventListeners();
+
 /* Form Validation */
 
 export const defaultFormConfig = {
